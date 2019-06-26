@@ -46,20 +46,11 @@ text-overflow: ellipsis;
   flex-direction: column;
 }
 
-h5.wrapped {
+.card-header h5 {
   margin: 0 0 5px 0;
   font-size: 16px;
   color: #000;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  cursor: pointer;
-}
-
-h5.expanded {
-  margin: 0 0 5px 0;
-  font-size: 16px;
-  color: #000;
   text-overflow: ellipsis;
   cursor: pointer;
 }

@@ -38,13 +38,15 @@ const cardIconMappings = {
 };
 
 export default class DropdownMenuItem extends React.Component {
-  state = { expand: "wrapped", more: false };
+  state = { h5style: { "white-space" : "nowrap" }, more: false };
 
   onItemClick = () => {
-    const { expand } = this.state;
-    expand === "wrapped"
-      ? this.setState({ expand: "expanded" })
-      : this.setState({ expand: "wrapped" });
+    const { h5style } = this.state;
+    Object.keys(h5style).length > 0
+      ? this.setState({ h5style: {} })
+      : this.setState({ h5style: { "white-space" : "nowrap" } });
+
+  
   };
 
   render() {
@@ -57,7 +59,7 @@ export default class DropdownMenuItem extends React.Component {
     const inSavedMenu = this.props.inSavedMenu ? this.props.inSavedMenu : false;
     const savedMenuHighlightedProviderCard =
       inSavedMenu && isHighlighted ? "savedHighlighted" : "unchanged";
-    const { expand } = this.state;
+    const { h5style } = this.state;
     const cardIcon = cardIconMappings[provider.typeName];
     return (
       <div
@@ -66,9 +68,9 @@ export default class DropdownMenuItem extends React.Component {
       >
         <div className="card-container">
           <div className="card-header">
-            <h5 className={expand} onClick={this.onItemClick}>{provider.name}</h5>
+            <h5 style={h5style} onClick={this.onItemClick}>{provider.name}</h5>
             <div className="wrapped-info">
-              <div className={`prov-type ${expand}`}>
+              <div className={`prov-type`}>
                 <FontAwesomeIcon icon={cardIcon} color={providerTypeToColor[provider.typeName]} />
                 <p>{provider.typeName}</p>
               </div>
